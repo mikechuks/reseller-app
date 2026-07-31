@@ -65,7 +65,7 @@
       </nav>
 
       <div class="sidebar-user">
-        <img class="avatar-img avatar-md sidebar-user-avatar" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
+        <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('user_dashboard/assets/images/avatar/avatar.jpg') }}" alt="Admin Hasan">
         <strong>Admin Hasan</strong>
         <small>Active Workspace</small>
       </div>
@@ -117,7 +117,7 @@
 
             <div class="dropdown">
               <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
+                <img class="avatar-img avatar-sm" src="{{ asset('user_dashboard/assets/images/avatar/avatar.jpg') }}" alt="Admin Hasan">
                 <span class="profile-name d-none d-sm-inline">Admin Hasan</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end">

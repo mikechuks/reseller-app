@@ -11,6 +11,30 @@
     <link rel="icon" href="user_frontend/img/favicon.ico">
     <link rel="stylesheet" href="user_frontend/style.css">
     <link rel="stylesheet" href="user_frontend/css/custom-override.css">
+    <style>
+.success-message{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#f0fff4;
+    border-left:5px solid #28a745;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.success-message .icon{
+    font-size:32px;
+}
+.success-message h4{
+    margin:0;
+    color:#28a745;
+}
+.success-message p{
+    margin:5px 0 0;
+    color:#555;
+}
+</style>
 </head>
 <body>
 

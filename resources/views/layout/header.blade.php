@@ -38,6 +38,8 @@
                     </li>
                     <li><a href="post.html">Insights</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
             </nav>
 
@@ -60,7 +62,9 @@
                 <li><a href="/services">Services</a></li>
                 <li><a href="#">Solutions</a></li>
                 <li><a href="post.html">Insights</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact">Contacts</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login"></a>Login</li>
             </ul>
         </div>
     </header>
