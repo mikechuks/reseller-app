@@ -14,14 +14,14 @@ class OrderController extends Controller
                     ->latest()
                     ->paginate(10);
 
-        return view('orders.index', compact('orders'));
+        return view('admin/view_order', compact('orders'));
     }
 
     public function create()
     {
         $users = User::all();
 
-        return view('orders.create', compact('users'));
+        return view('admin/insert_order', compact('users'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class OrderController extends Controller
         Order::create($validated);
 
         return redirect()
-            ->route('orders.index')
+            ->route('order.create')
             ->with('success', 'Order created successfully.');
     }
 
@@ -55,7 +55,7 @@ class OrderController extends Controller
     {
         $users = User::all();
 
-        return view('orders.edit', compact('order', 'users'));
+        return view('admin.update_order', compact('order', 'users'));
     }
 
     public function update(Request $request, Order $order)
@@ -70,7 +70,7 @@ class OrderController extends Controller
         $order->update($validated);
 
         return redirect()
-            ->route('orders.index')
+            ->route('order.edit', $order->id)
             ->with('success', 'Order updated successfully.');
     }
 

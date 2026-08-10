@@ -10,19 +10,24 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewsController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
+
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
+
 Route::get('/services', function () {
     return view('services');
-});
+})->name('services');
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/settings', [SettingsController::class, 'index']);
@@ -68,10 +73,18 @@ Route::put('/order-item/{order}', [OrderController::class, 'update'])->name('ord
 Route::delete('/order-item/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 //Payments
-Route::get('/payments', [OrderController::class, 'index'])->name('payment.index');
-Route::get('/insert-payments', [OrderController::class, 'create'])->name('payment.create');
-Route::post('/insert-payments', [OrderController::class, 'store'])->name('payment.store');
-Route::get('/payments/{payment}', [OrderController::class, 'edit'])->name('payment.edit');
-Route::put('/payments/{payment}', [OrderController::class, 'update'])->name('payment.update');
-Route::delete('/payments/{payment}', [OrderController::class, 'destroy'])->name('payment.destroy');
+Route::get('/payments', [PaymentController::class, 'index'])->name('payment.index');
+Route::get('/insert-payments', [PaymentController::class, 'create'])->name('payment.create');
+Route::post('/insert-payments', [PaymentController::class, 'store'])->name('payment.store');
+Route::get('/payments/{payment}', [PaymentController::class, 'edit'])->name('payment.edit');
+Route::put('/payments/{payment}', [PaymentController::class, 'update'])->name('payment.update');
+Route::delete('/payments/{payment}', [PaymentController::class, 'destroy'])->name('payment.destroy');
+
+//Reviews
+Route::get('/reviews', [ReviewsController::class, 'index'])->name('review.index');
+Route::get('/insert-reviews', [ReviewsController::class, 'create'])->name('review.create');
+Route::post('/insert-reviews', [ReviewsController::class, 'store'])->name('review.store');
+Route::get('/reviews/{review}', [ReviewsController::class, 'edit'])->name('review.edit');
+Route::put('/reviews/{review}', [ReviewsController::class, 'update'])->name('review.update');
+Route::delete('/reviews/{review}', [ReviewsController::class, 'destroy'])->name('review.destroy');
 

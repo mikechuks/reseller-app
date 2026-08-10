@@ -17,7 +17,7 @@ class PaymentController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('payments.index', compact('payments'));
+        return view('admin.view_payment', compact('payments'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PaymentController extends Controller
     {
         $orders = Order::all();
 
-        return view('payments.create', compact('orders'));
+        return view('admin.insert_payment', compact('orders'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PaymentController extends Controller
         Payment::create($validated);
 
         return redirect()
-            ->route('payments.index')
+            ->route('payment.create')
             ->with('success', 'Payment created successfully.');
     }
 
@@ -68,7 +68,7 @@ class PaymentController extends Controller
     {
         $orders = Order::all();
 
-        return view('payments.edit', compact('payment', 'orders'));
+        return view('admin.update_payment', compact('payment', 'orders'));
     }
 
     /**
@@ -88,7 +88,7 @@ class PaymentController extends Controller
         $payment->update($validated);
 
         return redirect()
-            ->route('payments.index')
+            ->route('payment.edit', $payment->id)
             ->with('success', 'Payment updated successfully.');
     }
 
@@ -100,7 +100,7 @@ class PaymentController extends Controller
         $payment->delete();
 
         return redirect()
-            ->route('payments.index')
+            ->route('payment.index')
             ->with('success', 'Payment deleted successfully.');
     }
 }

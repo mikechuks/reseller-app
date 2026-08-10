@@ -17,16 +17,16 @@
             <!-- Nav Links -->
             <nav class="ve-nav">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="/" class="active">Home</a></li>
                     <li class="has-drop">
-                        <a href="about.html">About <i class="fa fa-angle-down"></i></a>
+                        <a href="/about">About <i class="fa fa-angle-down"></i></a>
                         <ul class="ve-dropdown">
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="/about">About Us</a></li>
                             <li><a href="services.html">Our Services</a></li>
                             <li><a href="elements.html">UI Elements</a></li>
                         </ul>
                     </li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="/services">Services</a></li>
                     <li class="has-drop">
                         <a href="#">Solutions <i class="fa fa-angle-down"></i></a>
                         <ul class="ve-dropdown">
@@ -37,9 +37,9 @@
                         </ul>
                     </li>
                     <li><a href="post.html">Insights</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
                 </ul>
             </nav>
 
@@ -55,16 +55,25 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="ve-mobile-menu" id="ve-mobile-menu">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="#">Solutions</a></li>
-                <li><a href="post.html">Insights</a></li>
-                <li><a href="/contact">Contacts</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="/login"></a>Login</li>
-            </ul>
-        </div>
+
+                <div class="ve-mobile-menu" id="ve-mobile-menu">
+                    <ul>
+                        <li><a href="<?php echo route('home'); ?>">Home</a></li>
+
+                        <li><a href="<?php echo route('about'); ?>">About</a></li>
+
+                        <li><a href="<?php echo route('services'); ?>">Services</a></li>
+
+                        <li><a href="#">Solutions</a></li>
+
+                        <li><a href="#">Insights</a></li>
+
+                        <li><a href="<?php echo route('contact'); ?>">Contacts</a></li>
+
+                        <li><a href="/register">Register</a></li>
+
+                        <li><a href="/login">Login</a></li>
+                    </ul>
+                </div>
+
     </header>

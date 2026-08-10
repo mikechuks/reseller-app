@@ -64,16 +64,17 @@
                 </thead>
                 <tbody>
             <?php foreach($orders as $order):?>
+                <tr>
                 <td class="fw-semibold"><?php echo $order->id; ?></td>
-                <td><div class="table-media"><img class="product-thumb" src="../assets/images/ecommerce/product-4.jpg" alt="Travel Backpack"><span>Travel Backpack</span></div></td>
                 <td><?php echo htmlspecialchars($order->order_number); ?></td>
-                <td><?php echo htmlspecialchars($order->user->first_name); echo htmlspecialchars($order->user->last_name); ?></td>
+                <td><?php if($order->user){echo htmlspecialchars($order->user->first_name . ' ' . $order->user->last_name);} else { echo 'N/A';} ?>
+                  </td>
                 <td><?php echo htmlspecialchars(number_format($order->total_amount,2)); ?></td>
                 <td><span class="badge text-bg-danger"><?php echo htmlspecialchars(ucfirst($order->status)); ?></span></td>
                 <td><?php echo htmlspecialchars($order->created_at); ?></td>
                 <td><?php echo htmlspecialchars($order->updated_at); ?></td>
-                <td class="text-end"><a class="btn btn-light btn-sm" href="<?php echo route('orders.edit',$order->id); ?>" type="button">Edit</a>
-                <form action="<?php echo route('orders.destroy', $order->id); ?>" method="POST" style="display:inline;">
+                <td class="text-end"><a class="btn btn-light btn-sm" href="<?php echo route('order.edit',$order->id); ?>" type="button">Edit</a>
+                <form action="<?php echo route('order.destroy', $order->id); ?>" method="POST" style="display:inline;">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <input type="hidden" name="_method" value="DELETE">
                 <button

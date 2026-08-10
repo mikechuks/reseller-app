@@ -18,7 +18,7 @@
 
           <section class="row">
             <div class="col-12 col-xl-12">
-              <form class="panel needs-validation" action="<?php echo route('orders.update'); ?>" method="POST" novalidate>
+              <form class="panel needs-validation" action="<?php echo route('order.update', $order->id); ?>" method="POST" novalidate>
                 <div class="panel-header"><div><h2 class="h5 mb-1 section-title"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i><span>Validation Form</span></h2><p class="text-muted mb-0">Bootstrap-ready fields with custom validation feedback.</p></div></div>
                 <?php if(session('success')): ?>
                             <div class="success-message">
@@ -49,9 +49,9 @@
                         <input type="hidden" name="_method" value="PUT">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label" for="formPlan">Category</label>
+                        <label class="form-label" for="formPlan">Customer</label>
                         <select class="form-select" id="formPlan" name="user_id" required>
-                            <option value=""> Select Category</option>
+                            <option value="">Select Customer</option>
                                 <?php foreach ($users as $user): ?>
                                     <option value="<?php echo htmlspecialchars($user->id); ?>">
                                         <?php echo htmlspecialchars($user->first_name); echo htmlspecialchars($user->last_name); ?>
@@ -62,17 +62,17 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="formName">Order Number</label>
-                        <input class="form-control" id="formName" name="order_number" required>
-                        <div class="invalid-feedback">Product name is required.</div>
+                        <input class="form-control" id="order_number" name="order_number" value="<?php echo old('order_number', $order->order_number); ?>" required>
+                        <div class="invalid-feedback">Order name is required.</div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="formPrice">Number</label>
-                        <input class="form-control" id="formPrice" type="number" step="0.01" name="total_number" placeholder="Price" required>
+                        <input class="form-control" id="formPrice" type="number" step="0.01" name="total_amount" placeholder="Price" required>
                         <div class="invalid-feedback">Valid price is required.</div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="formPlan">Status</label>
-                        <select class="form-select" id="formPlan" name="user_id" required>
+                        <select class="form-select" id="formPlan" name="status" required>
                             <option value=""> Select Status</option>
                             <option value="pending">Pending</option>
                             <option value="processing">Processing</option>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4">
-                    <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i> Create Order</button>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i>Update Order</button>
                 </div>
               </form>
             </div>
