@@ -11,14 +11,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->get();
-        $users = "";
 
-        return view('user_dashboard.profile', compact('users'));
+        return view('admin.view_user', compact('users'));
     }
 
     public function create()
     {
-        return view('users.create');
+        return view('admin.insert_user');
     }
 
     public function store(Request $request)
@@ -42,7 +41,7 @@ class UserController extends Controller
         ]);
 
         return redirect()
-            ->route('users.index')
+            ->route('user.create')
             ->with('success', 'User created successfully');
     }
 
@@ -53,7 +52,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('admin.update_user', compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -75,7 +74,7 @@ class UserController extends Controller
         ]);
 
         return redirect()
-            ->route('users.index')
+            ->route('user.edit')
             ->with('success', 'User updated successfully');
     }
 
@@ -84,7 +83,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()
-            ->route('users.index')
+            ->route('user.index')
             ->with('success', 'User deleted successfully');
     }
 }

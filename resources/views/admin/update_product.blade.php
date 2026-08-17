@@ -15,92 +15,293 @@
               </div>
             </div>
           </div>
-          <section class="row">
-            <div class="col-12 col-xl-12">
-              <form class="panel needs-validation" action="<?php echo route('products.update',$product->id); ?>" method="POST" novalidate>
-                <div class="panel-header"><div><h2 class="h5 mb-1 section-title"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i><span>Validation Form</span></h2><p class="text-muted mb-0">Bootstrap-ready fields with custom validation feedback.</p></div></div>
-                <?php if(session('success')): ?>
+            <section class="row">
+                <div class="col-12 col-xl-12">
+
+                    <form class="panel needs-validation"
+                        action="<?php echo route('products.update', $product->id); ?>"
+                        method="POST"
+                        novalidate>
+
+                        <div class="panel-header">
+                            <div>
+                                <h2 class="h5 mb-1 section-title">
+                                    <i class="bi bi-ui-checks-grid" aria-hidden="true"></i>
+                                    <span>Validation Form</span>
+                                </h2>
+
+                                <p class="text-muted mb-0">
+                                    Bootstrap-ready fields with custom validation feedback.
+                                </p>
+                            </div>
+                        </div>
+
+                        <?php if(session('success')): ?>
                             <div class="success-message">
                                 <div>
                                     <h4>Congratulations!</h4>
                                     <p><?php echo session('success'); ?></p>
                                 </div>
                             </div>
-                <?php endif; ?>
-                <?php if($errors->any()): ?>
-                    <div class="validation-alert">
-                        <div class="validation-header">
-                            <span class="validation-icon">⚠</span>
-                            <div>
-                                <h4>Validation Error</h4>
-                                <p>Please correct the following errors before submitting the form.</p>
+                        <?php endif; ?>
+
+                        <?php if($errors->any()): ?>
+                            <div class="validation-alert">
+
+                                <div class="validation-header">
+                                    <span class="validation-icon">⚠</span>
+
+                                    <div>
+                                        <h4>Validation Error</h4>
+                                        <p>
+                                            Please correct the following errors before submitting the form.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <ul class="validation-list">
+                                    <?php foreach($errors->all() as $error): ?>
+                                        <li><?php echo $error; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+
                             </div>
+                        <?php endif; ?>
+
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                        <input type="hidden" name="_method" value="PUT">
+
+                        <div class="row g-3">
+
+                            <!-- Product Name -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formName">
+                                    Product name
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formName"
+                                    name="name"
+                                    value="<?php echo old('name', $product->name); ?>"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Product name is required.
+                                </div>
+                            </div>
+
+
+                            <!-- Price -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formPrice">
+                                    Price
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formPrice"
+                                    type="number"
+                                    step="0.01"
+                                    name="price"
+                                    placeholder="Price"
+                                    value="<?php echo old('price', $product->price); ?>"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Valid price is required.
+                                </div>
+                            </div>
+
+
+                            <!-- Category -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formCategory">
+                                    Category
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    id="formCategory"
+                                    name="category_id"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <?php foreach ($categories as $category): ?>
+
+                                        <option
+                                            value="<?php echo htmlspecialchars($category->id); ?>"
+                                            <?php echo old('category_id', $product->category_id) == $category->id ? 'selected' : ''; ?>
+                                        >
+                                            <?php echo htmlspecialchars($category->name); ?>
+                                        </option>
+
+                                    <?php endforeach; ?>
+
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Choose a Category.
+                                </div>
+                            </div>
+
+
+                            <!-- Service Type -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formServiceType">
+                                    Service Type
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    id="formServiceType"
+                                    name="service_type"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Service Type
+                                    </option>
+
+                                    <option
+                                        value="airtime"
+                                        <?php echo old('service_type', $product->service_type) == 'airtime' ? 'selected' : ''; ?>
+                                    >
+                                        Airtime
+                                    </option>
+
+                                    <option
+                                        value="data"
+                                        <?php echo old('service_type', $product->service_type) == 'data' ? 'selected' : ''; ?>
+                                    >
+                                        Data
+                                    </option>
+
+                                    <option
+                                        value="tv"
+                                        <?php echo old('service_type', $product->service_type) == 'tv' ? 'selected' : ''; ?>
+                                    >
+                                        TV Subscription
+                                    </option>
+
+                                    <option
+                                        value="electricity"
+                                        <?php echo old('service_type', $product->service_type) == 'electricity' ? 'selected' : ''; ?>
+                                    >
+                                        Electricity
+                                    </option>
+
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Choose a Service Type.
+                                </div>
+                            </div>
+
+
+                            <!-- SKU -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formSku">
+                                    SKU
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formSku"
+                                    type="text"
+                                    name="sku"
+                                    placeholder="SKU"
+                                    value="<?php echo old('sku', $product->sku); ?>"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Enter a valid SKU.
+                                </div>
+                            </div>
+
+
+                            <!-- Status -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formStatus">
+                                    Status
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    id="formStatus"
+                                    name="status"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Status
+                                    </option>
+
+                                    <option
+                                        value="active"
+                                        <?php echo old('status', $product->status) == 'active' ? 'selected' : ''; ?>
+                                    >
+                                        Active
+                                    </option>
+
+                                    <option
+                                        value="inactive"
+                                        <?php echo old('status', $product->status) == 'inactive' ? 'selected' : ''; ?>
+                                    >
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Choose a Status.
+                                </div>
+                            </div>
+
+
+                            <!-- Description -->
+                            <div class="col-12">
+
+                                <label class="form-label" for="formMessage">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="formMessage"
+                                    rows="5"
+                                    name="description"
+                                    required
+                                ><?php echo old('description', $product->description); ?></textarea>
+
+                                <div class="invalid-feedback">
+                                    Description is required.
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <ul class="validation-list">
-                            <?php foreach($errors->all() as $error): ?>
-                                <li><?php echo $error; ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                <input type="hidden" name="_method" value="PUT">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label" for="formName">Product name</label>
-                        <input class="form-control" id="formName" name="name"                      value="<?php echo old('name', $product->name); ?>" required>
-                        <div class="invalid-feedback">Product name is required.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="formPrice">Price</label>
-                        <input class="form-control" id="formPrice" type="number" step="0.01" name="price" placeholder="Price" value="<?php echo old('name', $product->price); ?>" required>
-                        <div class="invalid-feedback">Valid price is required.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="formPlan">Category</label>
-                        <select class="form-select" id="formPlan" name="category_id" required>
-                            <option value=""> Select Category</option>
-                            <option value="1"> Select Category2</option>
-                                <?php foreach ($categories as $category): ?>
-                                    <option value="<?php echo htmlspecialchars($category->id); ?>">
-                                        <?php echo htmlspecialchars($category->name); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                        </select>
-                        <div class="invalid-feedback">Choose a Category.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="formBudget">Stock</label>
-                        <input class="form-control" id="formBudget" type="number" name="stock" placeholder="Stock" value="<?php echo old('name', $product->stock); ?>" required>
-                        <div class="invalid-feedback">Enter a valid Stock.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="formBudget">SKU</label>
-                        <input class="form-control" id="formBudget" type="text" name="sku" placeholder="SKU" value="<?php echo old('name', $product->sku); ?>" required>
-                        <div class="invalid-feedback">Enter a valid SKU.</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="formPlan">Status</label>
-                        <select class="form-select" id="formPlan" name="status" required>
-                            <option value=""> Select Status</option>
-                            <option value="active" <?php echo ($category->status == 'active') ? 'selected' : ''; ?>>Active</option>
-                            <option value="inactive" <?php echo ($category->status == 'inactive') ? 'selected' : ''; ?>>Inactive</option>
-                        </select>
-                        <div class="invalid-feedback">Choose a Status.</div>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label" for="formMessage">Description</label>
-                    <textarea class="form-control" id="formMessage" rows="5"         name="description" required>value="<?php echo old('name', $product->description); ?>"</textarea>
-                    <div class="invalid-feedback">Description is required.</div>
+                        <div class="d-flex justify-content-end mt-4">
+
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-send" aria-hidden="true"></i>
+                                Submit Form
+                            </button>
+
+                        </div>
+
+                    </form>
+
                 </div>
-            </div>
-                <div class="d-flex justify-content-end mt-4">
-                    <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i> Submit Form</button>
-                </div>
-              </form>
-            </div>
-          </section>
+            </section>
         </div>
       </main>
 @endsection

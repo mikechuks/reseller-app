@@ -30,47 +30,93 @@
             <div class="row">
                 <div class="col-12 col-lg-7 wow fadeInLeft" data-wow-delay="100ms">
                     <div class="ve-contact-form-wrap">
-                        <span class="ve-section-tag">Send a Message</span>
-                        <h2>Book a <span>Free Consultation</span></h2>
-                        <p>Fill in the form and one of our advisors will contact you within one business day.</p>
+                        <span class="ve-section-tag">Get In Touch</span>
+                        <h2>Contact <span>Our Support Team</span></h2>
+                        <p>Have a question or need assistance? Fill in the form and our support team will get back to you as soon as possible.</p>
+
                         <form class="ve-contact-form" action="#" method="post">
                             <div class="ve-form-row">
-                                <div class="ve-form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
-                                <div class="ve-form-group"><label>Email Address</label><input type="email" placeholder="Your email" required></div>
-                            </div>
-                            <div class="ve-form-row">
-                                <div class="ve-form-group"><label>Phone Number</label><input type="tel" placeholder="Your phone"></div>
-                                <div class="ve-form-group"><label>Service Interested In</label>
-                                    <select><option>Select a service</option><option>Investment Planning</option><option>Wealth Management</option><option>Retirement Planning</option><option>Tax Advisory</option><option>Risk Management</option></select>
+                                <div class="ve-form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="Your full name" required>
+                                </div>
+
+                                <div class="ve-form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" placeholder="Your email" required>
                                 </div>
                             </div>
-                            <div class="ve-form-group"><label>Your Message</label><textarea rows="5" placeholder="Tell us about your financial goals..."></textarea></div>
-                            <button type="submit" class="ve-btn-primary">Send Message <i class="fa fa-paper-plane"></i></button>
+
+                            <div class="ve-form-row">
+                                <div class="ve-form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" placeholder="Your phone">
+                                </div>
+
+                                <div class="ve-form-group">
+                                    <label>Service</label>
+                                    <select>
+                                        <option>Select a service</option>
+                                        <option>Airtime &amp; Data</option>
+                                        <option>Recharge Cards</option>
+                                        <option>GOtv Subscription</option>
+                                        <option>Startimes Subscription</option>
+                                        <option>Visa Services</option>
+                                        <option>Wallet &amp; Payment</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="ve-form-group">
+                                <label>Your Message</label>
+                                <textarea rows="5" placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+
+                            <button type="submit" class="ve-btn-primary">
+                                Send Message <i class="fa fa-paper-plane"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-5 wow fadeInRight" data-wow-delay="200ms">
                     <div class="ve-contact-aside">
+
                         <div class="ve-ca-box">
-                            <h4>Why Clients Choose Us</h4>
+                            <h4>Why Choose Our Platform</h4>
+
                             <ul class="ve-ca-list">
-                                <li><i class="fa fa-check-circle"></i> Free initial consultation</li>
-                                <li><i class="fa fa-check-circle"></i> Response within 24 hours</li>
-                                <li><i class="fa fa-check-circle"></i> No sales pressure — ever</li>
-                                <li><i class="fa fa-check-circle"></i> Certified financial planners</li>
-                                <li><i class="fa fa-check-circle"></i> Fiduciary standard of care</li>
+                                <li><i class="fa fa-check-circle"></i> Fast and reliable digital services</li>
+                                <li><i class="fa fa-check-circle"></i> Convenient 24/7 service access</li>
+                                <li><i class="fa fa-check-circle"></i> Secure and reliable transactions</li>
+                                <li><i class="fa fa-check-circle"></i> Multiple services in one platform</li>
+                                <li><i class="fa fa-check-circle"></i> Dedicated customer support</li>
                             </ul>
                         </div>
+
                         <div class="ve-ca-hours">
-                            <h5><i class="fa fa-clock-o"></i> Office Hours</h5>
+                            <h5><i class="fa fa-clock-o"></i> Service Hours</h5>
+
                             <ul>
-                                <li><span>Monday – Friday</span><strong>9:00 AM – 6:00 PM</strong></li>
-                                <li><span>Saturday</span><strong>10:00 AM – 2:00 PM</strong></li>
-                                <li><span>Sunday</span><strong>Closed</strong></li>
+                                <li>
+                                    <span>Monday – Friday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
+                                <li>
+                                    <span>Saturday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
+                                <li>
+                                    <span>Sunday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
                             </ul>
                         </div>
+
                         <div class="ve-ca-social">
                             <h5>Connect With Us</h5>
+
                             <div class="ve-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -78,6 +124,7 @@
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

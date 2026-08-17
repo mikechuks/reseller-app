@@ -16,60 +16,236 @@
     <section class="ve-section ve-contact-section">
         <div class="container">
             <div class="row">
+
                 <div class="col-12 col-lg-7 wow fadeInLeft" data-wow-delay="100ms">
+
                     <div class="ve-contact-form-wrap">
-                        <h2>Login</h2>
+
+                        <span class="ve-section-tag">Welcome Back</span>
+
+                        <h2>Login to Your <span>Account</span></h2>
+
+
                         <?php if(session('success')): ?>
                             <div class="success-message">
                                 <span class="icon">🎊</span>
+
                                 <div>
                                     <h4>Congratulations!</h4>
                                     <p><?php echo session('success'); ?></p>
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <p>Fill in the form and one of our advisors will contact you within one business day.</p>
-                        <form class="ve-contact-form" action="<?php echo route('login.store'); ?>" method="POST">
-                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
+
+                        <?php if($errors->any()): ?>
+                            <div class="validation-alert">
+
+                                <div class="validation-header">
+                                    <span class="validation-icon">⚠</span>
+
+                                    <div>
+                                        <h4>Login Error</h4>
+
+                                        <p>
+                                            Please correct the following errors.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <ul class="validation-list">
+                                    <?php foreach($errors->all() as $error): ?>
+                                        <li>
+                                            <?php echo $error; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+
+                            </div>
+                        <?php endif; ?>
+
+
+                        <p>
+                            Login to your account to access your wallet, purchase digital services,
+                            view your transactions, and manage your account.
+                        </p>
+
+
+                        <form
+                            class="ve-contact-form"
+                            action="<?php echo route('login.store'); ?>"
+                            method="POST"
+                        >
+
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="<?php echo csrf_token(); ?>"
+                            >
+
+
                             <div class="ve-form-row">
-                                <div class="ve-form-group"><label>Username</label><input type="text" placeholder="Your full name" name="username" required></div>
-                                <div class="ve-form-group"><label>Password</label><input type="tel" placeholder="Your phone" name="password"></div>
+
+                                <div class="ve-form-group">
+
+                                    <label>Username</label>
+
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your username"
+                                        name="username"
+                                        value="<?php echo old('username'); ?>"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="ve-form-group">
+
+                                    <label>Password</label>
+
+                                    <input
+                                        type="password"
+                                        placeholder="Enter your password"
+                                        name="password"
+                                        required
+                                    >
+
+                                </div>
+
                             </div>
-                            <button type="submit" class="ve-btn-primary">Login</button>
+
+
+                            <div class="ve-form-group">
+
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="remember"
+                                        value="1"
+                                        <?php echo old('remember') ? 'checked' : ''; ?>
+                                    >
+
+                                    Remember me
+                                </label>
+
+                            </div>
+
+
+                            <button type="submit" class="ve-btn-primary">
+                                Login
+                                <i class="fa fa-sign-in"></i>
+                            </button>
+
                         </form>
+
                     </div>
+
                 </div>
+
+
                 <div class="col-12 col-lg-5 wow fadeInRight" data-wow-delay="200ms">
+
                     <div class="ve-contact-aside">
+
+
                         <div class="ve-ca-box">
-                            <h4>Why Clients Choose Us</h4>
+
+                            <h4>Why Use Our Platform?</h4>
+
                             <ul class="ve-ca-list">
-                                <li><i class="fa fa-check-circle"></i> Free initial consultation</li>
-                                <li><i class="fa fa-check-circle"></i> Response within 24 hours</li>
-                                <li><i class="fa fa-check-circle"></i> No sales pressure — ever</li>
-                                <li><i class="fa fa-check-circle"></i> Certified financial planners</li>
-                                <li><i class="fa fa-check-circle"></i> Fiduciary standard of care</li>
+
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Fast and reliable digital services
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Easy airtime and data purchases
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    GOtv and Startimes subscriptions
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Convenient wallet management
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Secure and reliable transactions
+                                </li>
+
                             </ul>
+
                         </div>
+
+
                         <div class="ve-ca-hours">
-                            <h5><i class="fa fa-clock-o"></i> Office Hours</h5>
+
+                            <h5>
+                                <i class="fa fa-clock-o"></i>
+                                Service Availability
+                            </h5>
+
                             <ul>
-                                <li><span>Monday – Friday</span><strong>9:00 AM – 6:00 PM</strong></li>
-                                <li><span>Saturday</span><strong>10:00 AM – 2:00 PM</strong></li>
-                                <li><span>Sunday</span><strong>Closed</strong></li>
+
+                                <li>
+                                    <span>Monday – Friday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
+
+                                <li>
+                                    <span>Saturday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
+
+                                <li>
+                                    <span>Sunday</span>
+                                    <strong>24 Hours</strong>
+                                </li>
+
                             </ul>
+
                         </div>
+
+
                         <div class="ve-ca-social">
+
                             <h5>Connect With Us</h5>
+
                             <div class="ve-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+
                             </div>
+
                         </div>
+
+
                     </div>
+
                 </div>
+
             </div>
         </div>
     </section>

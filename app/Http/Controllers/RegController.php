@@ -11,7 +11,6 @@ class RegController extends Controller
     public function index()
     {
         $users = User::latest()->get();
-        $users = "";
 
         return view('register', compact('users'));
     }

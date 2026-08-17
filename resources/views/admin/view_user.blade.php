@@ -10,11 +10,10 @@
               <span class="page-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
               <div>
                 <p class="eyebrow mb-1">Account</p>
-                <h1 class="h3 mb-1">Show Reviews</h1>
+                <h1 class="h3 mb-1">Show Users</h1>
                 <p class="text-muted mb-0">Manage your personal details, bio, and contact preferences.</p>
               </div>
             </div>
-            
           </div>
             <section class="panel">
                 <div class="panel-header">
@@ -23,6 +22,7 @@
                             <i class="bi bi-table" aria-hidden="true"></i>
                             <span>Advanced Table</span>
                         </h2>
+
                         <p class="text-muted mb-0">
                             Searchable responsive table for orders and customer data.
                         </p>
@@ -31,9 +31,9 @@
                     <input
                         class="form-control form-control-sm table-search"
                         type="search"
-                        placeholder="Search reviews"
+                        placeholder="Search users"
                         data-table-search="ordersTable"
-                        aria-label="Search reviews"
+                        aria-label="Search users"
                     >
                 </div>
 
@@ -50,9 +50,12 @@
                     <div class="validation-alert">
                         <div class="validation-header">
                             <span class="validation-icon">⚠</span>
+
                             <div>
                                 <h4>Validation Error</h4>
-                                <p>Please correct the following errors before submitting the form.</p>
+                                <p>
+                                    Please correct the following errors before submitting the form.
+                                </p>
                             </div>
                         </div>
 
@@ -65,133 +68,90 @@
                 <?php endif; ?>
 
                 <div class="table-responsive">
-                    <table class="table align-middle mb-0" id="ordersTable" data-searchable-table>
+                    <table
+                        class="table align-middle mb-0"
+                        id="ordersTable"
+                        data-searchable-table
+                    >
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Customer</th>
-                                <th>Product</th>
-                                <th>Rating</th>
-                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th class="text-end">Action</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
-                                <th class="text-end">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
 
-                        <?php foreach($reviews as $review): ?>
+                        <?php foreach($users as $user): ?>
 
                             <tr>
+
                                 <td class="fw-semibold">
-                                    <?php echo $review->id; ?>
+                                    <?php echo htmlspecialchars($user->id); ?>
                                 </td>
 
-                                <!-- Customer -->
-                                <td>
-                                    <?php if($review->user): ?>
-                                        <?php echo htmlspecialchars($review->user->first_name); ?>
-                                        <?php echo htmlspecialchars($review->user->last_name); ?>
-                                    <?php else: ?>
-                                        <span class="text-muted">No User</span>
-                                    <?php endif; ?>
-                                </td>
-
-                                <!-- Product -->
                                 <td>
                                     <div class="table-media">
+                                        <img
+                                            class="product-thumb"
+                                            src="../assets/images/ecommerce/product-4.jpg"
+                                            alt="User"
+                                        >
 
-                                        <?php if($review->product): ?>
-
+                                        <span>
                                             <?php
-                                                $productImage = $review->product->images->first()->image ?? null;
+                                                echo htmlspecialchars(
+                                                    $user->first_name . ' ' . $user->last_name
+                                                );
                                             ?>
-
-                                            <?php if($productImage): ?>
-                                                <img
-                                                    class="product-thumb"
-                                                    src="<?php echo asset('storage/' . $productImage); ?>"
-                                                    alt="<?php echo htmlspecialchars($review->product->name); ?>"
-                                                >
-                                            <?php else: ?>
-                                                <img
-                                                    class="product-thumb"
-                                                    src="<?php echo asset('assets/images/ecommerce/product-4.jpg'); ?>"
-                                                    alt="<?php echo htmlspecialchars($review->product->name); ?>"
-                                                >
-                                            <?php endif; ?>
-
-                                            <span>
-                                                <?php echo htmlspecialchars($review->product->name); ?>
-                                            </span>
-
-                                        <?php else: ?>
-
-                                            <span class="text-muted">No Product</span>
-
-                                        <?php endif; ?>
-
+                                        </span>
                                     </div>
                                 </td>
 
-                                <!-- Rating -->
                                 <td>
-                                    <?php echo htmlspecialchars($review->rating); ?>
+                                    <?php echo htmlspecialchars($user->username); ?>
                                 </td>
 
-                                <!-- Status -->
                                 <td>
-                                    <?php if($review->status === 'approved'): ?>
-
-                                        <span class="badge text-bg-success">
-                                            <?php echo htmlspecialchars($review->status); ?>
-                                        </span>
-
-                                    <?php elseif($review->status === 'pending'): ?>
-
-                                        <span class="badge text-bg-warning">
-                                            <?php echo htmlspecialchars($review->status); ?>
-                                        </span>
-
-                                    <?php elseif($review->status === 'rejected'): ?>
-
-                                        <span class="badge text-bg-danger">
-                                            <?php echo htmlspecialchars($review->status); ?>
-                                        </span>
-
-                                    <?php else: ?>
-
-                                        <span class="badge text-bg-secondary">
-                                            <?php echo htmlspecialchars($review->status); ?>
-                                        </span>
-
-                                    <?php endif; ?>
+                                    <span class="badge text-bg-success">
+                                        Active
+                                    </span>
                                 </td>
 
-                                <!-- Created At -->
                                 <td>
-                                    <?php echo htmlspecialchars($review->created_at); ?>
+                                    <?php echo htmlspecialchars($user->phone); ?>
                                 </td>
 
-                                <!-- Updated At -->
                                 <td>
-                                    <?php echo htmlspecialchars($review->updated_at); ?>
+                                    <?php echo htmlspecialchars($user->email); ?>
                                 </td>
 
-                                <!-- Actions -->
+                                <td>
+                                    <?php echo htmlspecialchars($user->created_at); ?>
+                                </td>
+
+                                <td>
+                                    <?php echo htmlspecialchars($user->updated_at); ?>
+                                </td>
+
                                 <td class="text-end">
 
                                     <a
                                         class="btn btn-light btn-sm"
-                                        href="<?php echo route('review.edit', $review->id); ?>"
+                                        href="<?php echo route('user.edit', $user->id); ?>"
                                         type="button"
                                     >
                                         Edit
                                     </a>
 
                                     <form
-                                        action="<?php echo route('reviews.destroy', $review->id); ?>"
+                                        action="<?php echo route('user.destroy', $user->id); ?>"
                                         method="POST"
                                         style="display:inline;"
                                     >
@@ -211,7 +171,7 @@
                                         <button
                                             type="submit"
                                             class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Are you sure you want to delete this review?')"
+                                            onclick="return confirm('Are you sure you want to delete this user?')"
                                         >
                                             Delete
                                         </button>
@@ -219,6 +179,7 @@
                                     </form>
 
                                 </td>
+
                             </tr>
 
                         <?php endforeach; ?>

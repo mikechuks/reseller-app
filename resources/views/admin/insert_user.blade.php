@@ -13,14 +13,14 @@
                 <h1 class="h3 mb-1">Add Product</h1>
                 <p class="text-muted mb-0">Manage your personal details, bio, and contact preferences.</p>
               </div>
-            </div>           
+            </div>
+            
           </div>
             <section class="row">
                 <div class="col-12 col-xl-12">
-
                     <form
                         class="panel needs-validation"
-                        action="<?php echo route('product.store'); ?>"
+                        action="<?php echo route('user.store'); ?>"
                         method="POST"
                         novalidate
                     >
@@ -47,6 +47,7 @@
                             </div>
                         <?php endif; ?>
 
+
                         <?php if($errors->any()): ?>
                             <div class="validation-alert">
 
@@ -70,186 +71,161 @@
                             </div>
                         <?php endif; ?>
 
+
                         <input
                             type="hidden"
                             name="_token"
                             value="<?php echo csrf_token(); ?>"
                         >
 
+
                         <div class="row g-3">
 
-                            <!-- Product Name -->
+                            <!-- First Name -->
                             <div class="col-md-6">
-                                <label class="form-label" for="formName">
-                                    Product name
+                                <label class="form-label" for="formFirstName">
+                                    First Name
                                 </label>
 
                                 <input
                                     class="form-control"
-                                    id="formName"
-                                    name="name"
-                                    required
-                                >
-
-                                <div class="invalid-feedback">
-                                    Product name is required.
-                                </div>
-                            </div>
-
-
-                            <!-- Price -->
-                            <div class="col-md-6">
-                                <label class="form-label" for="formPrice">
-                                    Price
-                                </label>
-
-                                <input
-                                    class="form-control"
-                                    id="formPrice"
-                                    type="number"
-                                    step="0.01"
-                                    name="price"
-                                    placeholder="Price"
-                                    required
-                                >
-
-                                <div class="invalid-feedback">
-                                    Valid price is required.
-                                </div>
-                            </div>
-
-
-                            <!-- Category -->
-                            <div class="col-md-6">
-                                <label class="form-label" for="formPlan">
-                                    Category
-                                </label>
-
-                                <select
-                                    class="form-select"
-                                    id="formPlan"
-                                    name="category_id"
-                                    required
-                                >
-                                    <option value="">Select Category</option>
-
-                                    <?php foreach ($categories as $category): ?>
-
-                                        <option
-                                            value="<?php echo htmlspecialchars($category->id); ?>"
-                                        >
-                                            <?php echo htmlspecialchars($category->name); ?>
-                                        </option>
-
-                                    <?php endforeach; ?>
-
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Choose a Category.
-                                </div>
-                            </div>
-
-
-                            <!-- Service Type -->
-                            <div class="col-md-6">
-                                <label class="form-label" for="formServiceType">
-                                    Service Type
-                                </label>
-
-                                <select
-                                    class="form-select"
-                                    id="formServiceType"
-                                    name="service_type"
-                                    required
-                                >
-                                    <option value="">Select Service Type</option>
-                                    <option value="airtime">Airtime</option>
-                                    <option value="data">Data</option>
-                                    <option value="tv">TV Subscription</option>
-                                    <option value="electricity">Electricity</option>
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Choose a Service Type.
-                                </div>
-                            </div>
-
-
-                            <!-- SKU -->
-                            <div class="col-md-6">
-                                <label class="form-label" for="formSku">
-                                    SKU
-                                </label>
-
-                                <input
-                                    class="form-control"
-                                    id="formSku"
+                                    id="formFirstName"
                                     type="text"
-                                    name="sku"
-                                    placeholder="SKU"
+                                    name="first_name"
+                                    value="<?php echo old('first_name'); ?>"
+                                    placeholder="First Name"
                                     required
                                 >
 
                                 <div class="invalid-feedback">
-                                    Enter a valid SKU.
+                                    First name is required.
                                 </div>
                             </div>
 
 
-                            <!-- Status -->
+                            <!-- Last Name -->
                             <div class="col-md-6">
-                                <label class="form-label" for="formStatus">
-                                    Status
+                                <label class="form-label" for="formLastName">
+                                    Last Name
                                 </label>
 
-                                <select
-                                    class="form-select"
-                                    id="formStatus"
-                                    name="status"
+                                <input
+                                    class="form-control"
+                                    id="formLastName"
+                                    type="text"
+                                    name="last_name"
+                                    value="<?php echo old('last_name'); ?>"
+                                    placeholder="Last Name"
                                     required
                                 >
-                                    <option value="">Select Status</option>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
 
                                 <div class="invalid-feedback">
-                                    Choose a Status.
+                                    Last name is required.
                                 </div>
                             </div>
 
 
-                            <!-- Description -->
-                            <div class="col-12">
-                                <label class="form-label" for="formMessage">
-                                    Description
+                            <!-- Username -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formUsername">
+                                    Username
                                 </label>
 
-                                <textarea
+                                <input
                                     class="form-control"
-                                    id="formMessage"
-                                    rows="5"
-                                    name="description"
+                                    id="formUsername"
+                                    type="text"
+                                    name="username"
+                                    value="<?php echo old('username'); ?>"
+                                    placeholder="Username"
                                     required
-                                ></textarea>
+                                >
 
                                 <div class="invalid-feedback">
-                                    Description is required.
+                                    Username is required.
+                                </div>
+                            </div>
+
+
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formEmail">
+                                    Email
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formEmail"
+                                    type="email"
+                                    name="email"
+                                    value="<?php echo old('email'); ?>"
+                                    placeholder="Email Address"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Valid email is required.
+                                </div>
+                            </div>
+
+
+                            <!-- Phone -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formPhone">
+                                    Phone
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formPhone"
+                                    type="tel"
+                                    name="phone"
+                                    value="<?php echo old('phone'); ?>"
+                                    placeholder="Phone Number"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Phone number is required.
+                                </div>
+                            </div>
+
+
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <label class="form-label" for="formPassword">
+                                    Password
+                                </label>
+
+                                <input
+                                    class="form-control"
+                                    id="formPassword"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    minlength="8"
+                                    required
+                                >
+
+                                <div class="invalid-feedback">
+                                    Password must be at least 8 characters.
                                 </div>
                             </div>
 
                         </div>
 
+
                         <div class="d-flex justify-content-end mt-4">
-                            <button class="btn btn-primary" type="submit">
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
                                 <i class="bi bi-send" aria-hidden="true"></i>
                                 Submit Form
                             </button>
                         </div>
 
                     </form>
-
                 </div>
             </section>
         </div>

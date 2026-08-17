@@ -29,10 +29,10 @@ class ProductController extends Controller
     {
         $request->validate([
         'category_id' => 'required',
+        'service_type' => 'required',
         'name' => 'required|min:3|max:255',
         'description' => 'required',
         'price' => 'required|numeric|min:0',
-        'stock' => 'required|integer|min:0',
         'sku' => 'required|unique:products',
         'status' => 'required',
         ],[
@@ -44,7 +44,6 @@ class ProductController extends Controller
         'price.required' => 'Product price is required.',
         'price.numeric' => 'Product price must be a valid number.',
         'price.min' => 'Product price cannot be negative.',
-        'stock.required' => 'Stock quantity is required.',
         'stock.integer' => 'Stock must be a whole number.',
         'stock.min' => 'Stock cannot be negative.',
         'sku.required' => 'SKU is required.',
@@ -53,11 +52,11 @@ class ProductController extends Controller
         ]);
         Product::create([
             'category_id' => $request->category_id,
+            'service_type' => $request->service_type,
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'description' => $request->description,
             'price' => $request->price,
-            'stock' => $request->stock,
             'sku' => $request->sku,
             'status' => $request->status,
         ]);
@@ -87,21 +86,21 @@ class ProductController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
+            'service_type' => 'required',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'stock' => 'required|integer',
             'sku' => 'required|unique:products,sku,' . $product->id,
             'status' => 'required',
         ]);
 
         $product->update([
             'category_id' => $request->category_id,
+            'service_type' => $request->service_type,
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'description' => $request->description,
             'price' => $request->price,
-            'stock' => $request->stock,
             'sku' => $request->sku,
             'status' => $request->status,
         ]);

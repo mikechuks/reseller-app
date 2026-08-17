@@ -8,11 +8,11 @@ class Product extends Model
 {
     protected $fillable = [
         'category_id',
+        'service_type',
         'name',
         'slug',
         'description',
         'price',
-        'stock',
         'sku',
         'featured_image',
         'featured',

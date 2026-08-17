@@ -83,7 +83,7 @@ class ReviewsController extends Controller
     {
         $review->delete();
         return redirect()
-            ->route('reviews.index')
+            ->route('review.index')
             ->with('success', 'Review deleted successfully.');
     }
 }

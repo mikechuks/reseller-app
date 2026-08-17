@@ -21,28 +21,60 @@
     <section class="ve-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-lg-6 wow fadeInLeft" data-wow-delay="100ms">
-                    <div class="ve-about-img-stack">
-                        <div class="ve-about-img-1 bg-img" style="background-image:url(img/bg-img/14.jpg);"></div>
-                        <div class="ve-about-img-2 bg-img" style="background-image:url(img/bg-img/5.jpg);"></div>
-                        <div class="ve-about-ribbon"><strong>12+</strong><span>Years of Trust</span></div>
-                    </div>
+            <div class="col-12 col-lg-6 wow fadeInLeft" data-wow-delay="100ms">
+                <div class="ve-about-img-stack">
+                    <div class="ve-about-img-1 bg-img" style="background-image:url(img/bg-img/14.jpg);"></div>
+                    <div class="ve-about-img-2 bg-img" style="background-image:url(img/bg-img/5.jpg);"></div>
+                    <div class="ve-about-ribbon"><strong>24/7</strong><span>Reliable Service</span></div>
                 </div>
-                <div class="col-12 col-lg-6 wow fadeInRight" data-wow-delay="200ms">
-                    <div class="ve-about-text">
-                        <span class="ve-section-tag">Who We Are</span>
-                        <h2>A Firm Built on <span>Integrity</span> &amp; Results</h2>
-                        <p class="ve-lead">We are a team of certified financial advisors and analysts dedicated to helping individuals and businesses achieve financial clarity and long-term prosperity.</p>
-                        <p>Founded in San Francisco in 2012, VaultEdge started with a single mission: make professional wealth management accessible to everyone. Today, we manage over $4.2 billion in assets across 30+ countries.</p>
-                        <div class="ve-about-features">
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Certified Financial Planners (CFP)</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>SEC Registered Investment Advisor</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>Fiduciary — we always act in your interest</span></div>
-                            <div class="ve-af-item"><i class="fa fa-check"></i><span>No conflict-of-interest products</span></div>
+            </div>
+
+            <div class="col-12 col-lg-6 wow fadeInRight" data-wow-delay="200ms">
+                <div class="ve-about-text">
+                    <span class="ve-section-tag">Who We Are</span>
+
+                    <h2>Your Trusted Platform for <span>Digital Services</span></h2>
+
+                    <p class="ve-lead">
+                        We provide fast, convenient, and reliable digital services, making it easy
+                        to purchase airtime, data, recharge cards, TV subscriptions, and other
+                        essential services from one platform.
+                    </p>
+
+                    <p>
+                        Our platform is designed to make everyday digital payments simple and
+                        accessible. From MTN, Airtel, Glo and other network services to GOtv and
+                        Startimes subscriptions, we help you complete your transactions quickly,
+                        securely, and conveniently.
+                    </p>
+
+                    <div class="ve-about-features">
+                        <div class="ve-af-item">
+                            <i class="fa fa-check"></i>
+                            <span>Fast &amp; Reliable Airtime and Data Services</span>
                         </div>
-                        <a href="services.html" class="ve-btn-primary mt-30">View Our Services</a>
+
+                        <div class="ve-af-item">
+                            <i class="fa fa-check"></i>
+                            <span>MTN, Airtel, Glo &amp; Other Network Services</span>
+                        </div>
+
+                        <div class="ve-af-item">
+                            <i class="fa fa-check"></i>
+                            <span>GOtv &amp; Startimes Subscription Payments</span>
+                        </div>
+
+                        <div class="ve-af-item">
+                            <i class="fa fa-check"></i>
+                            <span>Secure &amp; Convenient Digital Transactions</span>
+                        </div>
                     </div>
+
+                    <a href="services.html" class="ve-btn-primary mt-30">
+                        View Our Services
+                    </a>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -78,44 +110,64 @@
     <section class="ve-section ve-team-section">
         <div class="container">
             <div class="ve-section-header text-center">
-                <span class="ve-section-tag">Meet the Experts</span>
-                <h2>Our Leadership <span>Team</span></h2>
-                <p>Seasoned professionals with decades of combined experience across global financial markets.</p>
+                <span class="ve-section-tag">Meet Our Team</span>
+                <h2>The People Behind <span>Our Platform</span></h2>
+                <p>Dedicated professionals working together to provide fast, reliable, and convenient digital services for everyone.</p>
             </div>
+
             <div class="row">
                 <div class="col-12 col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
                     <div class="ve-team-card">
                         <div class="ve-team-img bg-img" style="background-image:url(img/bg-img/15.jpg);"></div>
                         <div class="ve-team-info">
-                            <h5>Jordan Hayes</h5><span>Chief Executive Officer</span>
-                            <div class="ve-team-social"><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></div>
+                            <h5>Michael Nwoye</h5>
+                            <span>Chief Executive Officer</span>
+                            <div class="ve-team-social">
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="200ms">
                     <div class="ve-team-card">
                         <div class="ve-team-img bg-img" style="background-image:url(img/bg-img/16.jpg);"></div>
                         <div class="ve-team-info">
-                            <h5>Taylor Brooks</h5><span>Chief Investment Officer</span>
-                            <div class="ve-team-social"><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></div>
+                            <h5>David Johnson</h5>
+                            <span>Head of Operations</span>
+                            <div class="ve-team-social">
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="300ms">
                     <div class="ve-team-card">
                         <div class="ve-team-img bg-img" style="background-image:url(img/bg-img/17.jpg);"></div>
                         <div class="ve-team-info">
-                            <h5>Morgan Lane</h5><span>Head of Wealth Planning</span>
-                            <div class="ve-team-social"><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></div>
+                            <h5>Sarah Williams</h5>
+                            <span>Customer Support Manager</span>
+                            <div class="ve-team-social">
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="400ms">
                     <div class="ve-team-card">
                         <div class="ve-team-img bg-img" style="background-image:url(img/bg-img/18.jpg);"></div>
                         <div class="ve-team-info">
-                            <h5>Casey Rivera</h5><span>Head of Risk &amp; Compliance</span>
-                            <div class="ve-team-social"><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></div>
+                            <h5>Daniel Anderson</h5>
+                            <span>Technology &amp; Security Lead</span>
+                            <div class="ve-team-social">
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,40 +180,45 @@
                 <div class="ve-counter-item wow fadeInUp" data-wow-delay="100ms">
                     <i class="fa fa-users"></i>
                     <strong class="counter" data-count="50000">0</strong><span>+</span>
-                    <p>Happy Clients</p>
+                    <p>Registered Users</p>
                 </div>
+
                 <div class="ve-counter-item wow fadeInUp" data-wow-delay="200ms">
-                    <i class="fa fa-briefcase"></i>
-                    <strong class="counter" data-count="4200">0</strong><span>M+</span>
-                    <p>Assets Managed</p>
+                    <i class="fa fa-exchange"></i>
+                    <strong class="counter" data-count="1000000">0</strong><span>+</span>
+                    <p>Successful Transactions</p>
                 </div>
+
                 <div class="ve-counter-item wow fadeInUp" data-wow-delay="300ms">
                     <i class="fa fa-globe"></i>
-                    <strong class="counter" data-count="30">0</strong><span>+</span>
-                    <p>Countries Served</p>
+                    <strong class="counter" data-count="10">0</strong><span>+</span>
+                    <p>Digital Services</p>
                 </div>
+
                 <div class="ve-counter-item wow fadeInUp" data-wow-delay="400ms">
-                    <i class="fa fa-trophy"></i>
-                    <strong class="counter" data-count="18">0</strong><span></span>
-                    <p>Industry Awards</p>
+                    <i class="fa fa-clock-o"></i>
+                    <strong class="counter" data-count="24">0</strong><span>/7</span>
+                    <p>Service Availability</p>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="ve-newsletter-section">
         <div class="container">
             <div class="ve-newsletter-wrap">
                 <div class="ve-nl-left">
                     <i class="fa fa-envelope-o"></i>
                     <div>
-                        <h3>Stay Ahead of the Markets</h3>
-                        <p>Weekly insights, tips, and exclusive offers — straight to your inbox.</p>
+                        <h3>Stay Updated With Our Services</h3>
+                        <p>Get the latest updates, promotions, discounts, and exciting offers delivered straight to your inbox.</p>
                     </div>
                 </div>
+
                 <div class="ve-nl-right">
                     <form class="ve-nl-form" action="#" method="post">
                         <input type="email" placeholder="Enter your email address" required>
-                        <button type="submit">Subscribes</button>
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>

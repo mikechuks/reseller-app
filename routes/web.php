@@ -12,6 +12,13 @@ use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\MtnController;
+use App\Http\Controllers\AirtelController;
+use App\Http\Controllers\NineMobileController;
+use App\Http\Controllers\TravelFlightController;
+use App\Http\Controllers\TvSubscriptionController;
+use App\Http\Controllers\GloController;
+use App\Http\Controllers\AirtimeController;
 
 Route::get('/', function () {
     return view('home');
@@ -28,16 +35,29 @@ Route::get('/contact', function () {
 Route::get('/services', function () {
     return view('services');
 })->name('services');
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/settings', [SettingsController::class, 'index']);
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/login', [LoginController::class, 'showLogin']);
+Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard.show');
+Route::get('/airtime', [AirtimeController::class, 'userDashboard'])->name('airtimes.show');
+Route::get('/mtn', [MtnController::class, 'userDashboard'])->name('mtn-airtime.show');
+Route::get('/airtel', [AirtelController::class, 'userDashboard'])->name('airtel-airtime.show');
+Route::get('/glo', [GloController::class, 'userDashboard'])->name('glo-airtime.show');
+Route::get('/nine-mobile', [NineMobileController::class, 'userDashboard'])->name('nine-mobile-airtime.show');
+Route::get('/tv-subscription', [TvSubscriptionController::class, 'userDashboard'])->name('tv-subscription.show');
+Route::get('/travel-flight', [TravelFlightController::class, 'userDashboard'])->name('travel-flight.show');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.store');
-
 Route::get('/register', [RegController::class, 'index'])->name('register.index');
 Route::get('/register', [RegController::class, 'create'])->name('register.create');
 Route::post('/register', [RegController::class, 'store'])->name('register.store');
+
+//Users
+Route::get('/users', [UserController::class, 'index'])->name('user.index');
+Route::get('/insert-users', [UserController::class, 'create'])->name('user.create');
+Route::post('/insert-users', [UserController::class, 'store'])->name('user.store');
+Route::get('/edit-users/{user}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/update-users/{user}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/delete-users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 
 //Products
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
@@ -51,7 +71,6 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/insert-category', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/insert-category', [CategoryController::class, 'store'])->name('category.store');
-
 Route::get('/categories/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
