@@ -17,24 +17,89 @@
             <div class="heading-actions"><button class="btn btn-outline-secondary btn-sm" type="button"><i class="bi bi-download" aria-hidden="true"></i> Export</button><button class="btn btn-primary btn-sm" type="button"><i class="bi bi-file-earmark-plus" aria-hidden="true"></i> Create Report</button></div>
           </div>
 
-                      <div class="row">
-              <div class="col-md-4" >
-                <div class="panel h-100" >
-                  <div class="d-flex flex-wrap gap-2" style="display:flex; flex-direction:column; align-items:center;">
-                    <img src="{{ asset('uploads/categories/glo.png') }}" style="width:10rem;height:10rem"><br/>
-                  </div>
-                  <h5 class="fw-bold mb-2"> GLO Airtime </h5>
-                  <p class="text-muted small mb-3"> Buy GLO airtime instantly and securely. </p>                  
-                  <div>
-                      <div class="mb-3"> 
-                        <span class="text-muted small d-block">Airtime Amount</span> <span class="fs-4 fw-bold text-dark"> ₦100 </span> 
-                      </div>
-                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal">Buy Airtime</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <div class="row">
 
+                  <?php if ($products->count() > 0): ?>
+
+                      <?php foreach ($products as $product): ?>
+
+                          <div class="col-md-4 col-sm-4">
+
+                              <div class="panel h-100">
+
+                                  <div class="d-flex flex-wrap gap-2"
+                                      style="display:flex; flex-direction:column; align-items:center;">
+
+                                      <img
+                                          src="<?php echo asset('uploads/categories/glo.png'); ?>"
+                                          alt="GLO Airtime"
+                                          style="width:10rem;height:10rem"
+                                          class="img-fluid"
+                                      >
+
+                                      <br/>
+
+                                  </div>
+
+                                  <h5 class="fw-bold mb-2">
+                                      <?php echo htmlspecialchars($product->name); ?>
+                                  </h5>
+
+                                  <p class="text-muted small mb-3">
+                                      <?php
+                                          echo $product->description
+                                              ? htmlspecialchars($product->description)
+                                              : 'Buy GLO airtime instantly and securely.';
+                                      ?>
+                                  </p>
+
+                                  <div>
+
+                                      <div class="mb-3">
+
+                                          <span class="text-muted small d-block">
+                                              Airtime Amount
+                                          </span>
+
+                                          <span class="fs-4 fw-bold text-dark">
+                                              ₦<?php echo number_format($product->price, 2); ?>
+                                          </span>
+
+                                      </div>
+
+                                      <button
+                                          class="btn btn-primary"
+                                          type="button"
+                                          data-bs-toggle="modal"
+                                          data-bs-target="#confirmModal"
+                                          data-product-id="<?php echo $product->id; ?>"
+                                          data-product-name="<?php echo htmlspecialchars($product->name); ?>"
+                                          data-product-price="<?php echo $product->price; ?>"
+                                      >
+                                          Buy Airtime
+                                      </button>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+                      <?php endforeach; ?>
+
+                  <?php else: ?>
+
+                      <div class="col-12">
+
+                          <div class="alert alert-info">
+                              No GLO airtime products are currently available.
+                          </div>
+
+                      </div>
+
+                  <?php endif; ?>
+
+              </div>
 
               <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">

@@ -38,10 +38,20 @@
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">AirTel</span>
         </a>
-        <a class="nav-link" href="<?php echo route('tv-subscription.show'); ?>" aria-current="page">
-          <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-          <span class="nav-text">TV Subscription</span>
-        </a>
+        <!-- TV SUBSCRIPTION DROPDOWN -->
+        <div class="sidebar-dropdown"> 
+            <a href="#" class="nav-link sidebar-dropdown-toggle" id="tvSubscriptionToggle" aria-expanded="false"> <span class="nav-icon"> <i class="bi bi-speedometer2" aria-hidden="true"></i> </span> <span class="nav-text">TV Subscription</span> <span class="dropdown-arrow"> <i class="bi bi-chevron-down"></i> </span> 
+            </a> 
+          
+          <!-- TV Subscription Items --> 
+          <div class="sidebar-dropdown-menu" id="tvSubscriptionMenu"> 
+            <a class="nav-link dropdown-item-link" href="<?php echo route('dstv.show'); ?>"> <span class="nav-icon"> <i class="bi bi-tv"></i> </span> <span class="nav-text">DSTV</span> 
+            </a> 
+            <a class="nav-link dropdown-item-link" href="<?php echo route('gotv.show'); ?>"> <span class="nav-icon"> <i class="bi bi-tv"></i> </span> <span class="nav-text">GOtv</span> 
+            </a> 
+            <a class="nav-link dropdown-item-link" href="<?php echo route('startimes.show'); ?>"> <span class="nav-icon"> <i class="bi bi-tv"></i> </span> <span class="nav-text">Startimes</span> </a> 
+          </div> 
+        </div>
         <a class="nav-link" href="<?php echo route('travel-flight.show'); ?>" aria-current="page">
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">Travel and Flight</span>

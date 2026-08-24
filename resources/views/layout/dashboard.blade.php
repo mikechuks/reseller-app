@@ -121,6 +121,100 @@
         transform:translateY(0);
     }
 }
+
+/* =========================================
+   TV SUBSCRIPTION DROPDOWN
+   ========================================= */
+
+.sidebar-dropdown {
+    width: 100%;
+}
+
+
+/* Main TV Subscription Link */
+.sidebar-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/* Arrow */
+.dropdown-arrow {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    transition: transform 0.25s ease;
+}
+
+
+/* Rotate arrow when dropdown is open */
+.sidebar-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+   ========================================= */
+
+.sidebar-dropdown-menu {
+    display: none;
+    width: 100%;
+    padding-left: 20px;
+}
+
+
+/* Show dropdown */
+.sidebar-dropdown.open .sidebar-dropdown-menu {
+    display: block;
+}
+
+
+/* =========================================
+   DROPDOWN ITEMS
+   ========================================= */
+
+.dropdown-item-link {
+    display: flex;
+    align-items: center;
+
+    padding-left: 25px;
+
+    font-size: 14px;
+}
+
+
+/* Smaller icons for dropdown */
+.dropdown-item-link .nav-icon {
+    font-size: 14px;
+}
+
+
+/* Hover effect */
+.dropdown-item-link:hover {
+    padding-left: 30px;
+    transition: padding-left 0.2s ease;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar-dropdown-menu {
+        padding-left: 15px;
+    }
+
+    .dropdown-item-link {
+        padding-left: 20px;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -135,5 +229,43 @@
 
   <script src="{{ asset('user_dashboard/assets/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('user_dashboard/assets/js/main.js') }}"></script>
+  <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const toggle = document.getElementById('tvSubscriptionToggle');
+    const dropdown = toggle.closest('.sidebar-dropdown');
+
+    toggle.addEventListener('click', function (event) {
+
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.contains('open');
+
+        if (isOpen) {
+
+            dropdown.classList.remove('open');
+
+            toggle.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+
+        } else {
+
+            dropdown.classList.add('open');
+
+            toggle.setAttribute(
+                'aria-expanded',
+                'true'
+            );
+
+        }
+
+    });
+
+});
+
+</script>
 </body>
 </html>

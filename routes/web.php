@@ -20,36 +20,30 @@ use App\Http\Controllers\TvSubscriptionController;
 use App\Http\Controllers\GloController;
 use App\Http\Controllers\AirtimeController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
-Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard.show');
-Route::get('/airtime', [AirtimeController::class, 'userDashboard'])->name('airtimes.show');
-Route::get('/mtn', [MtnController::class, 'userDashboard'])->name('mtn-airtime.show');
-Route::get('/airtel', [AirtelController::class, 'userDashboard'])->name('airtel-airtime.show');
-Route::get('/glo', [GloController::class, 'userDashboard'])->name('glo-airtime.show');
-Route::get('/nine-mobile', [NineMobileController::class, 'userDashboard'])->name('nine-mobile-airtime.show');
-Route::get('/tv-subscription', [TvSubscriptionController::class, 'userDashboard'])->name('tv-subscription.show');
-Route::get('/travel-flight', [TravelFlightController::class, 'userDashboard'])->name('travel-flight.show');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+Route::get('/', function () {return view('home');})->name('home');
+Route::get('/about', function () {return view('about');})->name('about');
+Route::get('/contact', function () {return view('contact');})->name('contact');
+Route::get('/services', function () {return view('services');})->name('services');
 Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.store');
 Route::get('/register', [RegController::class, 'index'])->name('register.index');
 Route::get('/register', [RegController::class, 'create'])->name('register.create');
 Route::post('/register', [RegController::class, 'store'])->name('register.store');
+
+Route::middleware('auth')->group(function () {
+Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard.show');
+Route::get('/airtime', [AirtimeController::class, 'userDashboard'])->name('airtimes.show');
+Route::get('/mtn', [MtnController::class, 'userDashboard'])->name('mtn-airtime.show');
+Route::get('/airtel', [AirtelController::class, 'index'])->name('airtel-airtime.show');
+Route::get('/glo', [GloController::class, 'index'])->name('glo-airtime.show');
+Route::get('/nine-mobile', [NineMobileController::class, 'index'])->name('nine-mobile-airtime.show');
+Route::get('/tv-subscription/dstv', [TvSubscriptionController::class,'dstv'])->name('dstv.show');
+Route::get('/tv-subscription/gotv', [TvSubscriptionController::class,'gotv'])->name('gotv.show');
+Route::get('/tv-subscription/startimes', [TvSubscriptionController::class,'startimes'])->name('startimes.show');
+Route::get('/travel-flight', [TravelFlightController::class, 'userDashboard'])->name('travel-flight.show');
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 
 //Users
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
@@ -106,4 +100,6 @@ Route::post('/insert-reviews', [ReviewsController::class, 'store'])->name('revie
 Route::get('/reviews/{review}', [ReviewsController::class, 'edit'])->name('review.edit');
 Route::put('/reviews/{review}', [ReviewsController::class, 'update'])->name('review.update');
 Route::delete('/reviews/{review}', [ReviewsController::class, 'destroy'])->name('review.destroy');
+
+});
 
