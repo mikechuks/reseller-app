@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard.show');
 Route::get('/airtime', [AirtimeController::class, 'userDashboard'])->name('airtimes.show');
 Route::get('/mtn', [MtnController::class, 'userDashboard'])->name('mtn-airtime.show');
+Route::post('/mtn/airtime', [MtnController::class, 'buyAirtime'])->name('mtn-airtime.buy');
+Route::get('/test-vtu', [MtnController::class, 'testVtu']);
+Route::get('/test-airtime', [MtnController::class, 'testAirtime']);
 Route::get('/airtel', [AirtelController::class, 'index'])->name('airtel-airtime.show');
 Route::get('/glo', [GloController::class, 'index'])->name('glo-airtime.show');
 Route::get('/nine-mobile', [NineMobileController::class, 'index'])->name('nine-mobile-airtime.show');
@@ -41,7 +44,6 @@ Route::get('/tv-subscription/dstv', [TvSubscriptionController::class,'dstv'])->n
 Route::get('/tv-subscription/gotv', [TvSubscriptionController::class,'gotv'])->name('gotv.show');
 Route::get('/tv-subscription/startimes', [TvSubscriptionController::class,'startimes'])->name('startimes.show');
 Route::get('/travel-flight', [TravelFlightController::class, 'userDashboard'])->name('travel-flight.show');
-
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 

@@ -29,4 +29,6 @@ class GloController extends Controller
             'products'
         ));
     }
+
+
 }

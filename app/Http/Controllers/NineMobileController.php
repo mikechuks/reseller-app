@@ -29,4 +29,6 @@ class NineMobileController extends Controller
             'products'
         ));
     }
+
+
 }

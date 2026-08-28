@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'vtu' => [
+        'base_url' => env('VTU_BASE_URL', 'https://vtu.ng/wp-json'),
+        'username' => env('VTU_USERNAME'),
+        'password' => env('VTU_PASSWORD'),
+    ],
+
 ];
