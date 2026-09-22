@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Payment;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -56,6 +58,17 @@ class DashboardController extends Controller
         ));
     }
 
+    /** * Sign out user */
+    public function logout(Request $request) 
+    { 
+        Auth::logout(); 
+        // Invalidate the current session 
+        $request->session()->invalidate(); 
+        // Regenerate CSRF token 
+        $request->session()->regenerateToken(); 
+        return redirect()->route('login') ->with('success', 'You have been signed out successfully.'); 
+    }
+    
     // /**
     //  * Admin dashboard
     //  */

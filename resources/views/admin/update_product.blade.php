@@ -197,6 +197,12 @@
                                         Electricity
                                     </option>
 
+                                    <option
+                                        value="travel_flight"
+                                        <?php echo old('service_type', $product->service_type) == 'travel and flight' ? 'selected' : ''; ?>
+                                    >
+                                        Travel and Flight
+                                    </option>
                                 </select>
 
                                 <div class="invalid-feedback">

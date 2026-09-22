@@ -18,10 +18,6 @@
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">Dashboard</span>
         </a>
-        <a class="nav-link" href="<?php echo route('airtimes.show'); ?>" aria-current="page">
-          <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-          <span class="nav-text">Airtimes</span>
-        </a>
         <a class="nav-link" href="<?php echo route('mtn-airtime.show'); ?>" aria-current="page">
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">MTN</span>
@@ -59,7 +55,7 @@
       </nav>
 
       <div class="sidebar-user">
-        <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('user_dashboard/assets/images/avatar/avatar.jpg') }}" alt="Admin Hasan">
+        <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('user_dashboard/assets/images/avatar/avatar-1.jpg') }}" alt="Admin Hasan">
         <strong>Admin Hasan</strong>
         <small>Active Workspace</small>
       </div>
@@ -88,25 +84,101 @@
               <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
             </button>
             <div class="dropdown">
-              <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
-                <span class="notification-dot"></span>
-                <i class="bi bi-bell" aria-hidden="true"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end notification-menu">
-                <div class="dropdown-header fw-bold text-body">Notifications</div>
-                <a class="dropdown-item" href="users.html">
-                  <span class="notification-title">New user registered</span>
-                  <span class="notification-time">4 minutes ago</span>
-                </a>
-                <a class="dropdown-item" href="charts.html">
-                  <span class="notification-title">Revenue target reached</span>
-                  <span class="notification-time">32 minutes ago</span>
-                </a>
-                <a class="dropdown-item" href="settings.html">
-                  <span class="notification-title">Security review completed</span>
-                  <span class="notification-time">1 hour ago</span>
-                </a>
-              </div>
+
+                <?php
+                    $unreadNotifications = auth()->user()
+                        ->unreadNotifications
+                        ->take(10);
+
+                    $notificationCount = auth()->user()
+                        ->unreadNotifications
+                        ->count();
+                ?>
+
+                <button class="icon-button"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        aria-label="Notifications">
+
+                    <?php if ($notificationCount > 0): ?>
+                        <span class="notification-dot"></span>
+                    <?php endif; ?>
+
+                    <i class="bi bi-bell" aria-hidden="true"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-end notification-menu">
+
+                    <div class="dropdown-header fw-bold text-body d-flex justify-content-between align-items-center">
+
+                        <span>Notifications</span>
+
+                        <?php if ($notificationCount > 0): ?>
+                            <span class="badge bg-primary rounded-pill">
+                                <?php echo $notificationCount; ?>
+                            </span>
+                        <?php endif; ?>
+
+                    </div>
+
+                    <?php if ($unreadNotifications->count() > 0): ?>
+
+                        <?php foreach ($unreadNotifications as $notification): ?>
+
+                            <?php
+                                $data = $notification->data;
+
+                                $title = $data['title'] ?? 'Notification';
+                                $message = $data['message'] ?? '';
+                                $url = $data['url'] ?? '#';
+                            ?>
+
+                            <a class="dropdown-item notification-item"
+                              href="<?php echo $url !== '#' ? $url : '#'; ?>">
+
+                                <span class="notification-title">
+                                    <?php echo e($title); ?>
+                                </span>
+
+                                <?php if ($message): ?>
+                                    <span class="notification-message">
+                                        <?php echo e($message); ?>
+                                    </span>
+                                <?php endif; ?>
+
+                                <span class="notification-time">
+                                    <?php echo $notification->created_at->diffForHumans(); ?>
+                                </span>
+
+                            </a>
+
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+
+                        <div class="dropdown-item text-center py-4">
+
+                            <i class="bi bi-bell-slash fs-4 text-muted"></i>
+
+                            <div class="small text-muted mt-2">
+                                No new notifications
+                            </div>
+
+                        </div>
+
+                    <?php endif; ?>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item text-center fw-semibold"
+                      href="<?php echo route('notifications.index'); ?>">
+
+                        View all notifications
+
+                    </a>
+
+                </div>
             </div>
 
             <div class="dropdown">
@@ -116,9 +188,16 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="<?php echo route('profile'); ?>">Profile</a></li>
-                <li><a class="dropdown-item" href="<?php echo route('settings'); ?>">Account settings</a></li>
+                <li><a class="dropdown-item" href="<?php echo route('profile'); ?>">Account settings</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="<?php echo route('login'); ?>">Sign out</a></li>
+                <li>
+                    <form action="<?php echo route('logout'); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <button type="submit" class="dropdown-item">
+                            Sign out
+                        </button>
+                    </form>
+                </li>
               </ul>
             </div>
           </div>

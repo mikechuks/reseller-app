@@ -168,6 +168,7 @@
                                     <option value="data">Data</option>
                                     <option value="tv">TV Subscription</option>
                                     <option value="electricity">Electricity</option>
+                                    <option value="travel_flight">Travel and Flight</option>
                                 </select>
 
                                 <div class="invalid-feedback">

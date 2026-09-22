@@ -18,7 +18,8 @@ use App\Http\Controllers\NineMobileController;
 use App\Http\Controllers\TravelFlightController;
 use App\Http\Controllers\TvSubscriptionController;
 use App\Http\Controllers\GloController;
-use App\Http\Controllers\AirtimeController;
+use App\Http\Controllers\ProfileSettingsController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {return view('home');})->name('home');
 Route::get('/about', function () {return view('about');})->name('about');
@@ -32,7 +33,7 @@ Route::post('/register', [RegController::class, 'store'])->name('register.store'
 
 Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard.show');
-Route::get('/airtime', [AirtimeController::class, 'userDashboard'])->name('airtimes.show');
+Route::post('/logout', [DashboardController::class, 'logout'])->name('logout');
 Route::get('/mtn', [MtnController::class, 'userDashboard'])->name('mtn-airtime.show');
 Route::post('/mtn/airtime', [MtnController::class, 'buyAirtime'])->name('mtn-airtime.buy');
 Route::get('/test-vtu', [MtnController::class, 'testVtu']);
@@ -43,9 +44,27 @@ Route::get('/nine-mobile', [NineMobileController::class, 'index'])->name('nine-m
 Route::get('/tv-subscription/dstv', [TvSubscriptionController::class,'dstv'])->name('dstv.show');
 Route::get('/tv-subscription/gotv', [TvSubscriptionController::class,'gotv'])->name('gotv.show');
 Route::get('/tv-subscription/startimes', [TvSubscriptionController::class,'startimes'])->name('startimes.show');
-Route::get('/travel-flight', [TravelFlightController::class, 'userDashboard'])->name('travel-flight.show');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+Route::get('/profile', [ProfileSettingsController::class, 'index'])->name('profile');
+    // Profile settings page
+    Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profile.settings');
+    // Update profile information
+    Route::put('/profile-settings/profile', [ProfileSettingsController::class, 'updateProfile'])->name('profile.update');
+    // Update profile photo
+    Route::post('/profile-settings/photo', [ProfileSettingsController::class, 'updatePhoto'])->name('profile.photo.update');
+    // Update password
+    Route::put('/profile-settings/password', [ProfileSettingsController::class, 'updatePassword'])->name('profile.password.update');
+    //Notification
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read.all');
+
+//Travel and Flight
+    Route::get('/travel-flight', [TravelFlightController::class,'index'])->name('travel-flight.show');
+    // View selected travel/flight service
+    Route::get('/travel-flight/{id}', [TravelFlightController::class,'show'])->name('travel-flight.details');
+    // Purchase / booking
+    Route::post('/travel-flight/purchase', [TravelFlightController::class,'purchase'])->name('travel-flight.purchase');
+
 
 //Users
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
@@ -102,6 +121,5 @@ Route::post('/insert-reviews', [ReviewsController::class, 'store'])->name('revie
 Route::get('/reviews/{review}', [ReviewsController::class, 'edit'])->name('review.edit');
 Route::put('/reviews/{review}', [ReviewsController::class, 'update'])->name('review.update');
 Route::delete('/reviews/{review}', [ReviewsController::class, 'destroy'])->name('review.destroy');
-
 });
 
