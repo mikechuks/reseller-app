@@ -8,13 +8,13 @@ use App\Services\VtuService;
 use Illuminate\Http\Request;
 
 class MtnController extends Controller{
-        protected VtuService $vtuService;
 
-        public function __construct(VtuService $vtuService)
-        {
-            $this->vtuService = $vtuService;
-        }
+    protected VtuService $vtuService;
 
+    public function __construct(VtuService $vtuService)
+    {
+        $this->vtuService = $vtuService;
+    }
         /**
          * Display MTN Airtime page
          */

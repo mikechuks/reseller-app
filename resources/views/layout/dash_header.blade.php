@@ -18,6 +18,10 @@
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">Dashboard</span>
         </a>
+        <a class="nav-link" href="<?php echo route('prompt-text.show'); ?>" aria-current="page">
+          <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+          <span class="nav-text">AI Prompt</span>
+        </a>
         <a class="nav-link" href="<?php echo route('mtn-airtime.show'); ?>" aria-current="page">
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">MTN</span>

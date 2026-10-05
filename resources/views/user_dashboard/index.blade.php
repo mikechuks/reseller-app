@@ -17,132 +17,268 @@
             <div class="heading-actions"><button class="btn btn-outline-secondary btn-sm" type="button"><i class="bi bi-download" aria-hidden="true"></i> Export</button><button class="btn btn-primary btn-sm" type="button"><i class="bi bi-file-earmark-plus" aria-hidden="true"></i> Create Report</button></div>
           </div>
 
+
         <section class="row g-3 mt-1" aria-label="Dashboard metrics">
 
-            <div class="col-12 col-sm-6 col-xl-3">
-                <article class="metric-card metric-primary">
-                    <div class="metric-top">
-                        <span class="metric-label">Wallet Balance</span>
-                        <span class="metric-icon">
-                            <i class="bi bi-wallet2" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="metric-value">₦48,240</div>
-                    <div class="metric-meta">
-                        <a href="fund-wallet.html" class="text-success">Fund Wallet</a>
-                        <span>available balance</span>
-                    </div>
-                </article>
-            </div>
+        <!-- Wallet Balance -->
+        <div class="col-12 col-sm-6 col-xl-3">
 
-            <div class="col-12 col-sm-6 col-xl-3">
-                <article class="metric-card metric-success">
-                    <div class="metric-top">
-                        <span class="metric-label">Total Spent</span>
-                        <span class="metric-icon">
-                            <i class="bi bi-cash-stack" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="metric-value">₦{{ number_format($totalSpent, 2) }}</div>
-                    <div class="metric-meta">
-                        <span class="text-success">+8.2%</span>
-                        <span>this month</span>
-                    </div>
-                </article>
-            </div>
+            <article class="metric-card metric-primary">
 
-            <div class="col-12 col-sm-6 col-xl-3">
-                <article class="metric-card metric-warning">
-                    <div class="metric-top">
-                        <span class="metric-label">Transactions</span>
-                        <span class="metric-icon">
-                            <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="metric-value"> {{ $totalTransactions }}</div>
-                    <div class="metric-meta">
-                        <span class="text-success">+12</span>
-                        <span>this month</span>
-                    </div>
-                </article>
-            </div>
+                <div class="metric-top">
 
-            <div class="col-12 col-sm-6 col-xl-3">
-                <article class="metric-card metric-danger">
-                    <div class="metric-top">
-                        <span class="metric-label">Successful</span>
-                        <span class="metric-icon">
-                            <i class="bi bi-check-circle" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="metric-value">{{ $successfulTransactions }}</div>
-                    <div class="metric-meta">
-                        <span class="text-success">{{ $successRate }}%</span>
-                        <span>success rate</span>
-                    </div>
-                </article>
-            </div>
+                    <span class="metric-label">
+                        Wallet Balance
+                    </span>
+
+                    <span class="metric-icon">
+                        <i class="bi bi-wallet2" aria-hidden="true"></i>
+                    </span>
+
+                </div>
+
+                <div class="metric-value">
+                    ₦{{ number_format((float) $walletBalance, 2) }}
+                </div>
+
+                <div class="metric-meta">
+
+                    <a href="{{ route('wallet.fund') }}" class="text-success">
+                        Fund Wallet
+                    </a>
+
+                    <span>
+                        available balance
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- Total Spent -->
+        <div class="col-12 col-sm-6 col-xl-3">
+
+            <article class="metric-card metric-success">
+
+                <div class="metric-top">
+
+                    <span class="metric-label">
+                        Total Spent
+                    </span>
+
+                    <span class="metric-icon">
+                        <i class="bi bi-cash-stack" aria-hidden="true"></i>
+                    </span>
+
+                </div>
+
+                <div class="metric-value">
+                    ₦{{ number_format((float) $totalSpent, 2) }}
+                </div>
+
+                <div class="metric-meta">
+
+                    <span class="text-success">
+                        {{ $monthlyTransactions ?? 0 }}
+                    </span>
+
+                    <span>
+                        transactions this month
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- Total Transactions -->
+        <div class="col-12 col-sm-6 col-xl-3">
+
+            <article class="metric-card metric-warning">
+
+                <div class="metric-top">
+
+                    <span class="metric-label">
+                        Transactions
+                    </span>
+
+                    <span class="metric-icon">
+                        <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                    </span>
+
+                </div>
+
+                <div class="metric-value">
+                    {{ $totalTransactions }}
+                </div>
+
+                <div class="metric-meta">
+
+                    <span class="text-success">
+                        {{ $monthlyTransactions ?? 0 }}
+                    </span>
+
+                    <span>
+                        this month
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- Successful Transactions -->
+        <div class="col-12 col-sm-6 col-xl-3">
+
+            <article class="metric-card metric-danger">
+
+                <div class="metric-top">
+
+                    <span class="metric-label">
+                        Successful
+                    </span>
+
+                    <span class="metric-icon">
+                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                    </span>
+
+                </div>
+
+                <div class="metric-value">
+                    {{ $successfulTransactions }}
+                </div>
+
+                <div class="metric-meta">
+
+                    <span class="text-success">
+                        {{ $successRate }}%
+                    </span>
+
+                    <span>
+                        success rate
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
 
         </section>
 
 
         <section class="row g-3 mt-1">
 
-            <div class="col-12 col-xl-8">
+        <!-- Transaction Activity -->
+        <div class="col-12 col-xl-8">
 
-                <div class="panel">
+            <div class="panel">
 
-                    <div class="panel-header">
+                <div class="panel-header">
 
-                        <div>
-                            <h2 class="h5 mb-1 section-title">
-                                <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
-                                <span>Transaction Activity</span>
-                            </h2>
+                    <div>
 
-                            <p class="text-muted mb-0">
-                                Your transaction activity over the past months.
-                            </p>
-                        </div>
+                        <h2 class="h5 mb-1 section-title">
 
-                        <a class="btn btn-light btn-sm" href="transactions.html">
-                            View Transactions
-                        </a>
+                            <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+
+                            <span>
+                                Transaction Activity
+                            </span>
+
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            Your transaction activity over the past months.
+                        </p>
 
                     </div>
 
 
-                    <div class="chart-bars" aria-label="Transaction activity chart">
+                    <a
+                        class="btn btn-light btn-sm"
+                        href="{{ route('wallet.transactions') }}"
+                    >
+                        View Transactions
+                    </a>
 
-                        <div class="chart-column bar-42">
-                            <span></span>
-                            <small>Jan</small>
-                        </div>
+                </div>
 
-                        <div class="chart-column bar-58">
-                            <span></span>
-                            <small>Feb</small>
-                        </div>
 
-                        <div class="chart-column bar-51">
-                            <span></span>
-                            <small>Mar</small>
-                        </div>
+                <div
+                    class="chart-bars"
+                    aria-label="Transaction activity chart"
+                >
 
-                        <div class="chart-column bar-72">
-                            <span></span>
-                            <small>Apr</small>
-                        </div>
+                    <div class="chart-column bar-42">
 
-                        <div class="chart-column bar-66">
-                            <span></span>
-                            <small>May</small>
-                        </div>
+                        <span></span>
 
-                        <div class="chart-column bar-83">
-                            <span></span>
-                            <small>Jun</small>
-                        </div>
+                        <small>
+                            Jan
+                        </small>
+
+                    </div>
+
+
+                    <div class="chart-column bar-58">
+
+                        <span></span>
+
+                        <small>
+                            Feb
+                        </small>
+
+                    </div>
+
+
+                    <div class="chart-column bar-51">
+
+                        <span></span>
+
+                        <small>
+                            Mar
+                        </small>
+
+                    </div>
+
+
+                    <div class="chart-column bar-72">
+
+                        <span></span>
+
+                        <small>
+                            Apr
+                        </small>
+
+                    </div>
+
+
+                    <div class="chart-column bar-66">
+
+                        <span></span>
+
+                        <small>
+                            May
+                        </small>
+
+                    </div>
+
+
+                    <div class="chart-column bar-83">
+
+                        <span></span>
+
+                        <small>
+                            Jun
+                        </small>
 
                     </div>
 
@@ -150,34 +286,54 @@
 
             </div>
 
+        </div>
 
-            <div class="col-12 col-xl-4">
 
-                <div class="panel h-100">
+        <!-- Quick Services -->
+        <div class="col-12 col-xl-4">
 
-                    <div class="panel-header">
+            <div class="panel h-100">
 
-                        <div>
-                            <h2 class="h5 mb-1 section-title">
-                                <i class="bi bi-lightning-charge" aria-hidden="true"></i>
-                                <span>Quick Services</span>
-                            </h2>
+                <div class="panel-header">
 
-                            <p class="text-muted mb-0">
-                                Access your most used services.
-                            </p>
-                        </div>
+                    <div>
+
+                        <h2 class="h5 mb-1 section-title">
+
+                            <i
+                                class="bi bi-lightning-charge"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Quick Services
+                            </span>
+
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            Access your most used services.
+                        </p>
 
                     </div>
 
+                </div>
 
-                    <div class="activity-list">
+
+                <div class="activity-list">
+
+                    <!-- Airtime -->
+                    <a
+                        href=""
+                        class="text-decoration-none text-dark"
+                    >
 
                         <div class="activity-item">
 
                             <span class="activity-dot bg-primary"></span>
 
                             <div>
+
                                 <p class="mb-1 fw-semibold">
                                     Buy Airtime
                                 </p>
@@ -185,16 +341,26 @@
                                 <p class="text-muted small mb-0">
                                     MTN, Airtel, Glo &amp; 9mobile
                                 </p>
+
                             </div>
 
                         </div>
 
+                    </a>
+
+
+                    <!-- Data -->
+                    <a
+                        href="#"
+                        class="text-decoration-none text-dark"
+                    >
 
                         <div class="activity-item">
 
                             <span class="activity-dot bg-success"></span>
 
                             <div>
+
                                 <p class="mb-1 fw-semibold">
                                     Buy Data
                                 </p>
@@ -202,16 +368,26 @@
                                 <p class="text-muted small mb-0">
                                     Get affordable data bundles
                                 </p>
+
                             </div>
 
                         </div>
 
+                    </a>
+
+
+                    <!-- TV Subscription -->
+                    <a
+                        href=""
+                        class="text-decoration-none text-dark"
+                    >
 
                         <div class="activity-item">
 
                             <span class="activity-dot bg-warning"></span>
 
                             <div>
+
                                 <p class="mb-1 fw-semibold">
                                     TV Subscription
                                 </p>
@@ -219,17 +395,21 @@
                                 <p class="text-muted small mb-0">
                                     GOtv &amp; Startimes subscriptions
                                 </p>
+
                             </div>
 
                         </div>
 
-                    </div>
+                    </a>
 
                 </div>
 
             </div>
 
+        </div>
+
         </section>
+
 
 
         <section class="panel mt-3">
